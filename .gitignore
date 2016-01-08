@@ -1,0 +1,9 @@
+# private data will go on nerc repository once appropriate
+data/private/*
+
+# do not track some hidden files
+.Rhistory
+.directory
+
+*~
+*.md
