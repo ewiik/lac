@@ -17,7 +17,9 @@ if(!file.exists("data/private/at2macroallterr.csv")) {
   stop("get macrofossil files from Dropbox") }
 terr <- read.csv("data/private/at2macroallterr.csv")
 terr <- terr[,-which(names(terr) == 'X')]
-## FIXME: correct name of 'rabbit'
+
+names(terr)[which(names(terr) %in% c("black.ball", "hairy.wing", "rabbit"))] <-
+  c("Cenococcum.geophilum.sclerotia", "Chaoborid.wing", "Salix.pod")
 
 if(!file.exists("data/private/at2macroallplant.csv")) {
   stop("get macrofossil files from Dropbox") }
@@ -67,6 +69,10 @@ names(anicorr)[1] <- "rundepthtop"
 
 terrcorr <- cbind(macros$newruntop, terr)
 names(terrcorr)[1] <- "rundepthtop"
+
+#remove bubblecushion
+remove <- which(names(terrcorr) == "bubblecushion")
+terrcorr <- terrcorr[,-remove]
 
 plantcorr <- cbind(macros$newruntop, plant)
 names(plantcorr)[1] <- "rundepthtop"
